@@ -1,20 +1,16 @@
 <ion-navbar *navbar>
-  <ion-title>Providers</ion-title>
-  <ion-buttons>
-      <button>
-          nothing :)
-      </button>
-  </ion-buttons>
+    <ion-title>Leages & Regions</ion-title>
+    <ion-buttons>
+    </ion-buttons>
 </ion-navbar>
 
-<ion-content padding class="page1">
-  <ion-card>
-      <ion-card-header>
-          Whats My Score
-      </ion-card-header>
-      <ion-card-content>
-          to-do... 
-          providers list
-      </ion-card-content>
-  </ion-card>
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="#item of items">
+            {{item.Name}}
+            <ion-note item-right>
+                Competitions {{item.CompetitionCount}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
 </ion-content>

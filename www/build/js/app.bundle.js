@@ -3216,8 +3216,8 @@
 	var ionic_1 = __webpack_require__(6);
 	var startPage_1 = __webpack_require__(350);
 	var providersListPage_1 = __webpack_require__(351);
-	var searchCompetitorsPage_1 = __webpack_require__(353);
-	var logger_1 = __webpack_require__(352);
+	var searchCompetitorsPage_1 = __webpack_require__(355);
+	var logger_1 = __webpack_require__(353);
 	var MyApp = (function () {
 	    function MyApp(app, platform, logger) {
 	        this.app = app;
@@ -60650,8 +60650,8 @@
 	};
 	var ionic_1 = __webpack_require__(6);
 	var providersListPage_1 = __webpack_require__(351);
-	var searchCompetitorsPage_1 = __webpack_require__(353);
-	var logger_1 = __webpack_require__(352);
+	var searchCompetitorsPage_1 = __webpack_require__(355);
+	var logger_1 = __webpack_require__(353);
 	var StartPage = (function () {
 	    function StartPage(navController, navParams, logger) {
 	        this.navController = navController;
@@ -60695,14 +60695,27 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_1 = __webpack_require__(6);
+	var leagues_1 = __webpack_require__(352);
+	var logger_1 = __webpack_require__(353);
 	var ProvidersListPage = (function () {
-	    function ProvidersListPage() {
+	    function ProvidersListPage(logger, providerService) {
+	        var _this = this;
+	        this.logger = logger;
+	        this.providerService = providerService;
+	        providerService.List()
+	            .subscribe(function (response) {
+	            var items = response.json();
+	            _this.logger.notify("items");
+	            _this.logger.notify(items);
+	            _this.items = items;
+	        });
 	    }
 	    ProvidersListPage = __decorate([
 	        ionic_1.Page({
-	            templateUrl: 'build/pages/providersListPage/providersListPage.html'
+	            templateUrl: 'build/pages/providersListPage/providersListPage.html',
+	            providers: [leagues_1.ProviderService]
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [logger_1.Logger, leagues_1.ProviderService])
 	    ], ProvidersListPage);
 	    return ProvidersListPage;
 	})();
@@ -60711,6 +60724,88 @@
 
 /***/ },
 /* 352 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(8);
+	var http_1 = __webpack_require__(150);
+	var logger_1 = __webpack_require__(353);
+	var routes_1 = __webpack_require__(354);
+	var ProviderService = (function () {
+	    function ProviderService($http, logger) {
+	        this.$http = $http;
+	        this.logger = logger;
+	        logger.notify("ProviderService created");
+	    }
+	    ProviderService.prototype.Get = function (providerId) {
+	        //Expression interpolation
+	        //https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings
+	        var base = routes_1.Settings.WebApiBaseUrl;
+	        var endpoint = "/api/Providers/Get/";
+	        var route = base + route + providerId;
+	        var promise = this.$http.get(route);
+	        return promise;
+	    };
+	    ProviderService.prototype.List = function () {
+	        var _this = this;
+	        var base = routes_1.Settings.WebApiBaseUrl;
+	        var endpoint = "/Api/Providers/List/Enabled";
+	        var route = base + endpoint;
+	        this.logger.notify("Load :" + route);
+	        var promise = this.$http.get(route);
+	        promise.subscribe(function (response) {
+	            _this.logger.notify("response:");
+	            _this.logger.notify(response);
+	        });
+	        return promise;
+	    };
+	    ProviderService = __decorate([
+	        core_1.Injectable(), 
+	        __metadata('design:paramtypes', [http_1.Http, logger_1.Logger])
+	    ], ProviderService);
+	    return ProviderService;
+	})();
+	exports.ProviderService = ProviderService;
+	// export class ProviderService {
+	//     private $http: ng.IHttpService;
+	// 
+	//     constructor($http) {
+	//         this.$http = $http;
+	//     }
+	// 
+	//     public Get(providerId: number): angular.IHttpPromise<Models.IProvider> {
+	//         var route = "api/Providers/Get/{0}";
+	//         route = kendo.format(route, providerId);
+	//         route = kendo.format("{0}/{1}", Settings.WebApiBaseUrl, route);
+	// 
+	//         Logger.Notify("route: " + route);
+	// 
+	//         var promise = this.$http.get(route);
+	// 
+	//         return promise;
+	//     }
+	// 
+	//     public List(): angular.IHttpPromise<Models.IProvider[]> {
+	//         var route = "Api/Providers/List/Enabled";
+	//         route = kendo.format("{0}/{1}", Settings.WebApiBaseUrl, route);
+	// 
+	//         var promise = this.$http.get(route);
+	// 
+	//         return promise;
+	//     }
+	// } 
+
+
+/***/ },
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -60744,7 +60839,21 @@
 
 
 /***/ },
-/* 353 */
+/* 354 */
+/***/ function(module, exports) {
+
+	var Settings = (function () {
+	    function Settings() {
+	    }
+	    Settings.HubUrl = "https://breakouttrampoliningwebservices.azurewebsites.net";
+	    Settings.WebApiBaseUrl = "https://breakouttrampoliningwebservices.azurewebsites.net";
+	    return Settings;
+	})();
+	exports.Settings = Settings;
+
+
+/***/ },
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

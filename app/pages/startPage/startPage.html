@@ -1,28 +1,18 @@
 <ion-navbar *navbar>
-  <ion-title>Whats My Score</ion-title>
-  <ion-buttons>
-      <button>
-          nothing :)
-      </button>
-  </ion-buttons>
+    <ion-title>Whats My Score</ion-title>
+    <ion-buttons>
+    </ion-buttons>
 </ion-navbar>
 
-<ion-content padding class="page1">
-  <ion-card>
-      <ion-card-header>
-          Whats My Score
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-            <button ion-item (click)="NavigateToProviderList()">
-                <ion-icon name='ion-social-angular' item-left></ion-icon>
-                Providers
-            </button>
-            <button ion-item (click)="NavigateToSearchList()">
-                <ion-icon name='ion-social-angular' item-left></ion-icon>
-                Search
-            </button>
-        </ion-list>
-      </ion-card-content>
-  </ion-card>
+<ion-content>
+
+    <ion-list>
+
+        <button ion-item (click)="NavigateToProviderList()">
+            Leagues and Regions
+        </button>
+        <button ion-item (click)="NavigateToSearchList()">
+            Search
+        </button>
+    </ion-list>
 </ion-content>

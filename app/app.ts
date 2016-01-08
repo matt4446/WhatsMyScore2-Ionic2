@@ -6,6 +6,7 @@ import {ProvidersListPage} from './pages/providersListPage/providersListPage';
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';
 
 import {Logger} from './providers/logger/logger';
+//import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 
 interface IPage {
     title: string; 
