@@ -14,8 +14,7 @@ export class ProviderService{
     }
     
     public Get(providerId: number){
-        //Expression interpolation
-        //https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings
+        
         var base = Settings.WebApiBaseUrl;
         var endpoint = "/api/Providers/Get/";
         var route = base + route + providerId;
