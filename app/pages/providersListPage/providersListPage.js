@@ -10,19 +10,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_1 = require('ionic-framework/ionic');
 var leagues_1 = require("../../providers/leagues/leagues");
 var logger_1 = require("../../providers/logger/logger");
+var Rx_1 = require('rxjs/Rx');
 var ProvidersListPage = (function () {
     function ProvidersListPage(logger, providerService) {
         var _this = this;
         this.logger = logger;
         this.providerService = providerService;
-        providerService.List()
-            .subscribe(function (response) {
-            var items = response.json();
-            _this.logger.notify("items");
-            _this.logger.notify(items);
-            _this.items = items;
+        this.searchTerm = "";
+        this.searchSubject = new Rx_1.BehaviorSubject("");
+        //this.searchItems = "";
+        //throttle the input to avoid 
+        this.searchActioner = this.searchSubject
+            .filter(function (x) {
+            _this.logger.notify("all items");
+            var t = typeof (_this.allItems);
+            return t !== "undefined";
+        })
+            .subscribe(function (x) {
+            _this.logger.notify("search by: " + x);
+            _this.items = _this.allItems.filter(function (e) {
+                return e.Name.toLowerCase().indexOf(x) >= 0;
+            });
         });
     }
+    ProvidersListPage.prototype.onPageWillEnter = function () {
+        var _this = this;
+        this.providerService.List()
+            .subscribe(function (response) {
+            var items = response.json();
+            _this.logger.notify("items loaded");
+            _this.logger.notify(items);
+            _this.allItems = items;
+            if (_this.searchTerm.length > 0) {
+                _this.items = _this.allItems.filter(function (e) {
+                    return e.Name.toLowerCase().indexOf(_this.searchTerm) >= 0;
+                });
+            }
+            else {
+                _this.items = _this.allItems;
+            }
+        });
+    };
+    ProvidersListPage.prototype.update = function (searchBar) {
+        this.searchTerm = searchBar.value;
+        this.logger.notify("search update: " + this.searchTerm);
+        this.searchSubject.next(this.searchTerm);
+    };
+    ProvidersListPage.prototype.ngOnDestroy = function () {
+        this.logger.notify("Kill ProvidersListPage");
+        this.searchActioner.unsubscribe();
+        // Speak now or forever hold your peace
+    };
     ProvidersListPage = __decorate([
         ionic_1.Page({
             templateUrl: 'build/pages/providersListPage/providersListPage.html',
