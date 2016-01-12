@@ -6,4 +6,7 @@ Install Ionic v2 CLI
 http://ionicframework.com/docs/v2/getting-started/installation/
 
 Added: 
-Regions / Leagues + search
+Regions / Leagues + search (list filter)
+
+to-do: 
+search page

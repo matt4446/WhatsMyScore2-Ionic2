@@ -4,15 +4,33 @@
     </ion-buttons>
 </ion-navbar>
 
-<ion-content padding>
+<ion-content >
 
     <ion-list>
-
+        <ion-list-header>
+            Start
+        </ion-list-header>
         <button ion-item (click)="NavigateToProviderList()">
+            <ion-icon name="leaf" item-left></ion-icon>
             Leagues and Regions
+            <p>BUCS, SUTL ...</p>
         </button>
-        <button ion-item (click)="NavigateToSearchList()">
+        <button ion-item (click)="NavigateToMapPage()">
+            <ion-icon name="map" item-left></ion-icon>
+            Upcoming competitions
+        </button>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>
             Search
+        </ion-list-header>
+        <button ion-item (click)="NavigateToCompetitionSearch()">
+            <ion-icon name="leaf" item-left></ion-icon>
+            Competitions
+        </button>
+        <button ion-item (click)="NavigateToCompetitorSearch()">
+            <ion-icon name="person" item-left></ion-icon>
+            Competitors
         </button>
     </ion-list>
 </ion-content>

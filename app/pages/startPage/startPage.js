@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_1 = require('ionic-framework/ionic');
 var providersListPage_1 = require("../providersListPage/providersListPage");
 var searchCompetitorsPage_1 = require("../searchCompetitorsPage/searchCompetitorsPage");
+var upcomingMapPage_1 = require("../upcomingMapPage/upcomingMapPage");
 var logger_1 = require("../../providers/logger/logger");
 var StartPage = (function () {
     function StartPage(navController, navParams, logger) {
@@ -28,6 +29,15 @@ var StartPage = (function () {
         this.navController.push(searchCompetitorsPage_1.SearchCompetitorsPage, {}, {}, function () {
             _this.logger.notify("push search page callback");
         });
+    };
+    StartPage.prototype.NavigateToMapPage = function () {
+        var _this = this;
+        this.navController.push(upcomingMapPage_1.MapPage, {}, {}, function () {
+            _this.logger.notify("push map page callback");
+        });
+    };
+    StartPage.prototype.NavigateToCompetitionSearch = function () {
+        //todo - competition search.
     };
     StartPage = __decorate([
         ionic_1.Page({

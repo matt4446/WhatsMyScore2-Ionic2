@@ -1,9 +1,11 @@
-import {App, IonicApp, Config, Platform} from 'ionic-framework/ionic';
-import {Inject} from 'angular2/core';
+import {App, IonicApp, Config, Platform, NavController} from 'ionic-framework/ionic';
+import {Inject, Directive} from 'angular2/core';
+import {ANGULAR2_GOOGLE_MAPS_PROVIDERS, ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
 
 import {StartPage} from './pages/startPage/startPage';
 import {ProvidersListPage} from './pages/providersListPage/providersListPage';
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';
+
 
 import {Logger} from './providers/logger/logger';
 //import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
@@ -15,7 +17,9 @@ interface IPage {
 
 @App({
   templateUrl: 'build/app.html',
-  providers:[Logger] 
+  providers:[Logger, 
+  ANGULAR2_GOOGLE_MAPS_DIRECTIVES,
+  ANGULAR2_GOOGLE_MAPS_PROVIDERS] 
 })
 
 export class MyApp  {
@@ -27,6 +31,7 @@ export class MyApp  {
     
     constructor(
         private app: IonicApp,
+        private config: Config,
         private platform: Platform,  
         private logger: Logger) {
         //var logger = new Logger();

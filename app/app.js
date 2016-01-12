@@ -8,13 +8,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_1 = require('ionic-framework/ionic');
+var core_1 = require('angular2-google-maps/core');
 var startPage_1 = require('./pages/startPage/startPage');
 var providersListPage_1 = require('./pages/providersListPage/providersListPage');
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
 var logger_1 = require('./providers/logger/logger');
 var MyApp = (function () {
-    function MyApp(app, platform, logger) {
+    function MyApp(app, config, platform, logger) {
         this.app = app;
+        this.config = config;
         this.platform = platform;
         this.logger = logger;
         this.startPage = startPage_1.StartPage;
@@ -40,9 +42,11 @@ var MyApp = (function () {
     MyApp = __decorate([
         ionic_1.App({
             templateUrl: 'build/app.html',
-            providers: [logger_1.Logger]
+            providers: [logger_1.Logger,
+                core_1.ANGULAR2_GOOGLE_MAPS_DIRECTIVES,
+                core_1.ANGULAR2_GOOGLE_MAPS_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Platform, logger_1.Logger])
+        __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Config, ionic_1.Platform, logger_1.Logger])
     ], MyApp);
     return MyApp;
 })();

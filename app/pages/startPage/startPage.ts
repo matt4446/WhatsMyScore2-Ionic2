@@ -1,7 +1,9 @@
 import {Page, NavController, NavParams} from 'ionic-framework/ionic';
 import {ProvidersListPage} from "../providersListPage/providersListPage";
 import {SearchCompetitorsPage} from "../searchCompetitorsPage/searchCompetitorsPage";
-import {Logger} from "../../providers/logger/logger"
+import {MapPage} from "../upcomingMapPage/upcomingMapPage";
+
+import {Logger} from "../../providers/logger/logger";
 @Page({
   templateUrl: 'build/pages/startPage/startPage.html'
 })
@@ -27,5 +29,17 @@ export class StartPage {
       this.navController.push(SearchCompetitorsPage, {}, {}, () => {
           this.logger.notify("push search page callback");
       });
+  }
+  
+  public NavigateToMapPage()
+  {
+      this.navController.push(MapPage, {}, {}, () => {
+          this.logger.notify("push map page callback");
+      });
+  }
+  
+  public NavigateToCompetitionSearch() 
+  {
+      //todo - competition search.
   }
 }

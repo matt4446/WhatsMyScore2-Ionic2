@@ -18,8 +18,6 @@ var ProviderService = (function () {
         logger.notify("ProviderService created");
     }
     ProviderService.prototype.Get = function (providerId) {
-        //Expression interpolation
-        //https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings
         var base = routes_1.Settings.WebApiBaseUrl;
         var endpoint = "/api/Providers/Get/";
         var route = base + route + providerId;

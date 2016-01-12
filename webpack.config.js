@@ -7,7 +7,7 @@ module.exports = {
     'reflect-metadata',
     'web-animations.min',
     path.normalize('zone.js/dist/zone-microtask'),
-    path.resolve('app/app')
+    path.resolve('app/app'),
   ],
   output: {
     path: path.resolve('www/build/js'),
@@ -28,6 +28,11 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve('node_modules/angular2'),
+        loader: 'strip-sourcemap'
+      },
+      {
+        test: /\angular2-google-maps.js$/,
+        include: path.resolve('node_modules/angular2-google-maps/bundles'),
         loader: 'strip-sourcemap'
       }
     ],
