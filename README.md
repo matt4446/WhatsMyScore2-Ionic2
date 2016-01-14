@@ -1,4 +1,5 @@
 # WhatsMyScore2-Ionic2
+>This repository is currently a prototype to test out Ionic 2, NativeScript and Angular 2 together. This is not the app store version. 
 Trampolining Scores App - Built in Ionic 2 + Angular 2 + TypeScript 
 
 Install Ionic v2 CLI
