@@ -17,21 +17,14 @@ http://ionicframework.com/docs/v2/getting-started/installation/
 
 ### router-link: 
 Added routerLink directive to the start page: 
+[Commit](https://github.com/matt4446/WhatsMyScore2-Ionic2/blob/58b59d5963b5c062d6dc049e6109c53d4e7d5b1e/app/pages/startPage/startPage.html)
 
 changed the button from:
-><button ion-item (click)="NavigateToProviderList()">
-    <ion-icon name="leaf" item-left></ion-icon>
-    Leagues and Regions
-    <p>BUCS, SUTL ...</p>
-</button>
+>(click)="NavigateToProviderList()
+
 
 To:
-><button ion-item [routerLink]="['/Regions']">
-    <ion-icon name="leaf" item-left></ion-icon>
-    Leagues and Regions
-    <p>BUCS, SUTL ...</p>
-</button>
-
+>[routerLink]="['/Regions']"
 
 ### Router Sections: 
 1. /Regions
