@@ -5,22 +5,37 @@ Install Ionic v2 CLI
 
 http://ionicframework.com/docs/v2/getting-started/installation/
 
-Added: 
-Regions / Leagues + search (list filter)
+### Added: 
+1. Regions/Leagues + search (list filter)
+2. Map page - Google Map - in progress 
+ 
 
-to-do: 
-search page
+### to-do: 
+1. finish route changes 
+2. search page
 
-Changes: 
-Added routerLink directive to start page: 
 
-From:
-    (click)="NavigateToProviderList()"
+### router-link: 
+Added routerLink directive to the start page: 
+
+changed the button from:
+><button ion-item (click)="NavigateToProviderList()">
+    <ion-icon name="leaf" item-left></ion-icon>
+    Leagues and Regions
+    <p>BUCS, SUTL ...</p>
+</button>
+
 To:
-    [routerLink]="['/Regions']"
+><button ion-item [routerLink]="['/Regions']">
+    <ion-icon name="leaf" item-left></ion-icon>
+    Leagues and Regions
+    <p>BUCS, SUTL ...</p>
+</button>
 
 
-Sections: 
-/regions
-/UpcomingCompetitionMap
+### Router Sections: 
+1. /Regions
+    * todo: more complex route 
+    * Regions/:regionId/Competition/:competitionId
 
+2. /UpcomingCompetitionMap
