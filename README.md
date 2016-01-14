@@ -10,3 +10,17 @@ Regions / Leagues + search (list filter)
 
 to-do: 
 search page
+
+Changes: 
+Added routerLink directive to start page: 
+
+From:
+    (click)="NavigateToProviderList()"
+To:
+    [routerLink]="['/Regions']"
+
+
+Sections: 
+/regions
+/UpcomingCompetitionMap
+

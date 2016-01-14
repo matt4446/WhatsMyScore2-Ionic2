@@ -3215,12 +3215,15 @@
 	};
 	var ionic_1 = __webpack_require__(6);
 	var core_1 = __webpack_require__(353);
+	//router 
+	var router_1 = __webpack_require__(125);
+	//pages 
 	var startPage_1 = __webpack_require__(364);
 	var providersListPage_1 = __webpack_require__(365);
 	var upcomingMapPage_1 = __webpack_require__(597);
 	var searchCompetitorsPage_1 = __webpack_require__(596);
-	var router_1 = __webpack_require__(125);
 	var logger_1 = __webpack_require__(367);
+	//import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 	var MyApp = (function () {
 	    function MyApp(app, config, platform, logger) {
 	        this.app = app;

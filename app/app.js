@@ -9,12 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_1 = require('ionic-framework/ionic');
 var core_1 = require('angular2-google-maps/core');
+//router 
+var router_1 = require('angular2/router');
+//pages 
 var startPage_1 = require('./pages/startPage/startPage');
 var providersListPage_1 = require('./pages/providersListPage/providersListPage');
 var upcomingMapPage_1 = require("./pages/upcomingMapPage/upcomingMapPage");
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
-var router_1 = require('angular2/router');
 var logger_1 = require('./providers/logger/logger');
+//import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 var MyApp = (function () {
     function MyApp(app, config, platform, logger) {
         this.app = app;

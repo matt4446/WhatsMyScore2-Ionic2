@@ -4,3 +4,8 @@ export interface IProvider
     Name: string;
     Logo: string;
 }
+
+export interface IPage {
+    title: string; 
+    page: any;
+}

@@ -1,5 +1,5 @@
 import {Page, NavController, NavParams, Searchbar} from 'ionic-framework/ionic';
-import {IProvider} from "../../models/provider";
+import {IProvider} from "../../models/models";
 import {ProviderService} from "../../providers/leagues/leagues";
 import {Logger} from "../../providers/logger/logger";
 import {Observable, Subscription, BehaviorSubject} from 'rxjs/Rx';
