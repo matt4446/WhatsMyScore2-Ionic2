@@ -11,7 +11,9 @@ var ionic_1 = require('ionic-framework/ionic');
 var core_1 = require('angular2-google-maps/core');
 var startPage_1 = require('./pages/startPage/startPage');
 var providersListPage_1 = require('./pages/providersListPage/providersListPage');
+var upcomingMapPage_1 = require("./pages/upcomingMapPage/upcomingMapPage");
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
+var router_1 = require('angular2/router');
 var logger_1 = require('./providers/logger/logger');
 var MyApp = (function () {
     function MyApp(app, config, platform, logger) {
@@ -42,12 +44,17 @@ var MyApp = (function () {
     MyApp = __decorate([
         ionic_1.App({
             templateUrl: 'build/app.html',
-            providers: [logger_1.Logger,
-                core_1.ANGULAR2_GOOGLE_MAPS_DIRECTIVES,
-                core_1.ANGULAR2_GOOGLE_MAPS_PROVIDERS]
-        }), 
+            providers: [logger_1.Logger, core_1.ANGULAR2_GOOGLE_MAPS_PROVIDERS],
+            directives: [router_1.ROUTER_DIRECTIVES]
+        }),
+        router_1.RouteConfig([
+            { path: '/', component: startPage_1.StartPage, name: 'Start' },
+            { path: '/Regions', component: providersListPage_1.ProvidersListPage, name: 'Regions' },
+            { path: '/UpcomingCompetitionMap', component: upcomingMapPage_1.MapPage, name: "UpcomingCompetitionMap" }
+        ]), 
         __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Config, ionic_1.Platform, logger_1.Logger])
     ], MyApp);
     return MyApp;
 })();
 exports.MyApp = MyApp;
+//# sourceMappingURL=app.js.map

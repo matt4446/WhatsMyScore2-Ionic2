@@ -72,10 +72,10 @@ export class ProvidersListPage {
     }
     
     ngOnDestroy() {
+        //clear subscribers etc
         this.logger.notify("Kill ProvidersListPage");
-        
+
         this.searchActioner.unsubscribe();
-        // Speak now or forever hold your peace
     }
 
 }

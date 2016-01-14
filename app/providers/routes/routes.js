@@ -6,3 +6,4 @@ var Settings = (function () {
     return Settings;
 })();
 exports.Settings = Settings;
+//# sourceMappingURL=routes.js.map

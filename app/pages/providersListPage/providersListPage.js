@@ -57,9 +57,9 @@ var ProvidersListPage = (function () {
         this.searchSubject.next(this.searchTerm);
     };
     ProvidersListPage.prototype.ngOnDestroy = function () {
+        //clear subscribers etc
         this.logger.notify("Kill ProvidersListPage");
         this.searchActioner.unsubscribe();
-        // Speak now or forever hold your peace
     };
     ProvidersListPage = __decorate([
         ionic_1.Page({
@@ -71,3 +71,4 @@ var ProvidersListPage = (function () {
     return ProvidersListPage;
 })();
 exports.ProvidersListPage = ProvidersListPage;
+//# sourceMappingURL=providersListPage.js.map

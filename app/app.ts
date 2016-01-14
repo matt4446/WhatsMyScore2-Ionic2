@@ -4,7 +4,10 @@ import {ANGULAR2_GOOGLE_MAPS_PROVIDERS, ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'a
 
 import {StartPage} from './pages/startPage/startPage';
 import {ProvidersListPage} from './pages/providersListPage/providersListPage';
+import {MapPage} from "./pages/upcomingMapPage/upcomingMapPage";
+
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS} from 'angular2/router';
 
 
 import {Logger} from './providers/logger/logger';
@@ -17,10 +20,14 @@ interface IPage {
 
 @App({
   templateUrl: 'build/app.html',
-  providers:[Logger, 
-  ANGULAR2_GOOGLE_MAPS_DIRECTIVES,
-  ANGULAR2_GOOGLE_MAPS_PROVIDERS] 
+  providers:[Logger, ANGULAR2_GOOGLE_MAPS_PROVIDERS] ,
+  directives: [ROUTER_DIRECTIVES]
 })
+@RouteConfig([
+  { path: '/', component: StartPage, name: 'Start' },
+  { path: '/Regions', component: ProvidersListPage, name: 'Regions' },
+  { path: '/UpcomingCompetitionMap', component: MapPage, name: "UpcomingCompetitionMap" }
+])
 
 export class MyApp  {
     private pages : IPage[];

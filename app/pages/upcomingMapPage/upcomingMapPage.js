@@ -19,6 +19,7 @@ var MapPage = (function () {
     }
     MapPage = __decorate([
         ionic_1.Page({
+            selector: "UpcomingCompetitionMap",
             templateUrl: 'build/pages/upcomingMapPage/upcomingMapPage.html',
             providers: [],
             directives: [core_1.ANGULAR2_GOOGLE_MAPS_DIRECTIVES]
@@ -28,3 +29,4 @@ var MapPage = (function () {
     return MapPage;
 })();
 exports.MapPage = MapPage;
+//# sourceMappingURL=upcomingMapPage.js.map

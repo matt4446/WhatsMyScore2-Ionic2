@@ -20,3 +20,4 @@ var SearchCompetitorsPage = (function () {
     return SearchCompetitorsPage;
 })();
 exports.SearchCompetitorsPage = SearchCompetitorsPage;
+//# sourceMappingURL=searchCompetitorsPage.js.map

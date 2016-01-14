@@ -1,21 +1,18 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es5",
         "module": "commonjs",
         "noEmitOnError": false,
         "rootDir": ".",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "sourceRoot": "",
         "inlineSourceMap": false,
         "inlineSources": false
     },
     "files": [
-        "app/app.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ],
-    "compileOnSave": false
+        "app/app.ts",
+        "typings/tsd.d.ts"
+    ]
 }

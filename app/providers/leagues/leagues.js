@@ -72,3 +72,4 @@ exports.ProviderService = ProviderService;
 //         return promise;
 //     }
 // } 
+//# sourceMappingURL=leagues.js.map

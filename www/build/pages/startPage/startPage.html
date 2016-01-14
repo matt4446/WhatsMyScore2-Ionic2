@@ -6,10 +6,21 @@
 
 <ion-content >
 
+
     <ion-list>
         <ion-list-header>
-            Start
+            Start 
         </ion-list-header>
+        <button ion-item [routerLink]="['/Regions']">
+            <ion-icon name="leaf" item-left></ion-icon>
+            Leagues and Regions
+            <p>BUCS, SUTL ...</p>
+        </button>
+        <button ion-item [routerLink]="['/UpcomingCompetitionMap']">
+            <ion-icon name="map" item-left></ion-icon>
+            Upcoming competitions
+        </button>
+        <!-- 
         <button ion-item (click)="NavigateToProviderList()">
             <ion-icon name="leaf" item-left></ion-icon>
             Leagues and Regions
@@ -19,12 +30,13 @@
             <ion-icon name="map" item-left></ion-icon>
             Upcoming competitions
         </button>
+        --> 
     </ion-list>
     <ion-list>
         <ion-list-header>
             Search
         </ion-list-header>
-        <button ion-item (click)="NavigateToCompetitionSearch()">
+        <button ion-item (click)="NavigateToCompetitionSearch()" >
             <ion-icon name="leaf" item-left></ion-icon>
             Competitions
         </button>
