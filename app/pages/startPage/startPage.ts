@@ -1,5 +1,5 @@
 import {Page, NavController, NavParams, Alert} from 'ionic-framework/ionic';
-import {ProvidersListPage} from "../providersListPage/providersListPage";
+import {RegionsPage} from "../regionsPage/regionsPage";
 import {SearchCompetitorsPage} from "../searchCompetitorsPage/searchCompetitorsPage";
 import {MapPage} from "../upcomingMapPage/upcomingMapPage";
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS} from 'angular2/router';
@@ -22,7 +22,7 @@ export class StartPage {
   
   public NavigateToProviderList()
   {
-      this.navController.push(ProvidersListPage, {}, {}, () => {
+      this.navController.push(RegionsPage, {}, {}, () => {
          this.logger.notify("push providers page callback");
       });
   }

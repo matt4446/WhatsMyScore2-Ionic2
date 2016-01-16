@@ -6,7 +6,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS} from 'angular2/router';
 
 //pages 
 import {StartPage} from './pages/startPage/startPage';
-import {ProvidersListPage} from './pages/providersListPage/providersListPage';
+import {RegionsPage} from './pages/regionsPage/regionsPage';
 import {MapPage} from "./pages/upcomingMapPage/upcomingMapPage";
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';
 
@@ -23,7 +23,7 @@ import {Logger} from './providers/logger/logger';
 //router setup
 @RouteConfig([
   { path: '/', component: StartPage, name: 'Start' },
-  { path: '/Regions', component: ProvidersListPage, name: 'Regions' },
+  { path: '/Regions', component: RegionsPage, name: 'Regions' },
   { path: '/UpcomingCompetitionMap', component: MapPage, name: "UpcomingCompetitionMap" }
 ])
 
@@ -32,7 +32,7 @@ export class MyApp  {
     private root: any; 
     
     public startPage = StartPage;
-    public providersPage = ProvidersListPage;
+    public providersPage = RegionsPage;
     
     constructor(
         private app: IonicApp,
@@ -45,7 +45,7 @@ export class MyApp  {
         this.pages = [
             {
                 title : "Providers",
-                page: ProvidersListPage
+                page: RegionsPage
             },
             {
                 title : "Search",

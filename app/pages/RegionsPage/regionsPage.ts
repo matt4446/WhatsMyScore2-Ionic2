@@ -6,11 +6,11 @@ import {Observable, Subscription, BehaviorSubject} from 'rxjs/Rx';
 
 
 @Page({
-  templateUrl: 'build/pages/providersListPage/providersListPage.html',
+  templateUrl: 'build/pages/regionsPage/regionsPage.html',
   providers:[ProviderService] 
 })
 
-export class ProvidersListPage {
+export class RegionsPage {
     public allItems : IProvider[];
     public items : IProvider[];
     
@@ -64,10 +64,9 @@ export class ProvidersListPage {
     }
     
     public update(searchBar: Searchbar){
+        this.searchTerm = searchBar.value ? searchBar.value : "";;
         
-        this.searchTerm = searchBar.value;
         this.logger.notify("search update: " + this.searchTerm);
-        
         this.searchSubject.next(this.searchTerm);
     }
     

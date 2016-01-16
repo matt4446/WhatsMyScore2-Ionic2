@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_1 = require('ionic-framework/ionic');
-var providersListPage_1 = require("../providersListPage/providersListPage");
+var regionsPage_1 = require("../regionsPage/regionsPage");
 var searchCompetitorsPage_1 = require("../searchCompetitorsPage/searchCompetitorsPage");
 var upcomingMapPage_1 = require("../upcomingMapPage/upcomingMapPage");
 var router_1 = require('angular2/router');
@@ -21,7 +21,7 @@ var StartPage = (function () {
     }
     StartPage.prototype.NavigateToProviderList = function () {
         var _this = this;
-        this.navController.push(providersListPage_1.ProvidersListPage, {}, {}, function () {
+        this.navController.push(regionsPage_1.RegionsPage, {}, {}, function () {
             _this.logger.notify("push providers page callback");
         });
     };

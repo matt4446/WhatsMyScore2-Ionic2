@@ -11,8 +11,8 @@ var ionic_1 = require('ionic-framework/ionic');
 var leagues_1 = require("../../providers/leagues/leagues");
 var logger_1 = require("../../providers/logger/logger");
 var Rx_1 = require('rxjs/Rx');
-var ProvidersListPage = (function () {
-    function ProvidersListPage(logger, providerService) {
+var RegionsPage = (function () {
+    function RegionsPage(logger, providerService) {
         var _this = this;
         this.logger = logger;
         this.providerService = providerService;
@@ -33,7 +33,7 @@ var ProvidersListPage = (function () {
             });
         });
     }
-    ProvidersListPage.prototype.onPageWillEnter = function () {
+    RegionsPage.prototype.onPageWillEnter = function () {
         var _this = this;
         this.providerService.List()
             .subscribe(function (response) {
@@ -51,24 +51,25 @@ var ProvidersListPage = (function () {
             }
         });
     };
-    ProvidersListPage.prototype.update = function (searchBar) {
-        this.searchTerm = searchBar.value;
+    RegionsPage.prototype.update = function (searchBar) {
+        this.searchTerm = searchBar.value ? searchBar.value : "";
+        ;
         this.logger.notify("search update: " + this.searchTerm);
         this.searchSubject.next(this.searchTerm);
     };
-    ProvidersListPage.prototype.ngOnDestroy = function () {
+    RegionsPage.prototype.ngOnDestroy = function () {
         //clear subscribers etc
         this.logger.notify("Kill ProvidersListPage");
         this.searchActioner.unsubscribe();
     };
-    ProvidersListPage = __decorate([
+    RegionsPage = __decorate([
         ionic_1.Page({
-            templateUrl: 'build/pages/providersListPage/providersListPage.html',
+            templateUrl: 'build/pages/regionsPage/regionsPage.html',
             providers: [leagues_1.ProviderService]
         }), 
         __metadata('design:paramtypes', [logger_1.Logger, leagues_1.ProviderService])
-    ], ProvidersListPage);
-    return ProvidersListPage;
+    ], RegionsPage);
+    return RegionsPage;
 })();
-exports.ProvidersListPage = ProvidersListPage;
-//# sourceMappingURL=providersListPage.js.map
+exports.RegionsPage = RegionsPage;
+//# sourceMappingURL=regionsPage.js.map
