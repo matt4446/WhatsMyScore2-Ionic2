@@ -9,14 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_1 = require('ionic-framework/ionic');
 var leagues_1 = require("../../providers/leagues/leagues");
+var competitions_1 = require("../../providers/leagues/competitions");
 var logger_1 = require("../../providers/logger/logger");
 var Rx_1 = require('rxjs/Rx');
 var router_1 = require('angular2/router');
-var RegionsPage = (function () {
-    function RegionsPage(logger, providerService) {
+var RegionCompetionsPage = (function () {
+    function RegionCompetionsPage(logger, navController, navParams, providerService, competitionService) {
         var _this = this;
         this.logger = logger;
+        this.navController = navController;
+        this.navParams = navParams;
         this.providerService = providerService;
+        this.competitionService = competitionService;
+        this.logger.notify("params:");
+        this.logger.notify(navParams);
         this.searchTerm = "";
         this.searchSubject = new Rx_1.BehaviorSubject("");
         //this.searchItems = "";
@@ -34,13 +40,17 @@ var RegionsPage = (function () {
             });
         });
     }
-    RegionsPage.prototype.onPageWillEnter = function () {
+    RegionCompetionsPage.prototype.StartDate = function (item) {
+        var startDate = kendo.parseDate(item.StartDateTimeUtc);
+        kendo.toString(startDate, "G");
+    };
+    RegionCompetionsPage.prototype.onPageWillEnter = function () {
         var _this = this;
-        this.providerService.List()
+        var regionId = this.navParams.get("id");
+        var providerPromise = this.providerService.Get(regionId);
+        this.competitionService.List(regionId)
             .map(function (response) { return response.json(); })
             .subscribe(function (items) {
-            _this.logger.notify("items loaded");
-            _this.logger.notify(items);
             _this.allItems = items;
             if (_this.searchTerm.length > 0) {
                 _this.items = _this.allItems.filter(function (e) {
@@ -52,26 +62,25 @@ var RegionsPage = (function () {
             }
         });
     };
-    RegionsPage.prototype.update = function (searchBar) {
+    RegionCompetionsPage.prototype.update = function (searchBar) {
         this.searchTerm = searchBar.value ? searchBar.value : "";
         ;
         this.logger.notify("search update: " + this.searchTerm);
         this.searchSubject.next(this.searchTerm);
     };
-    RegionsPage.prototype.ngOnDestroy = function () {
+    RegionCompetionsPage.prototype.ngOnDestroy = function () {
         //clear subscribers etc
-        this.logger.notify("Kill ProvidersListPage");
-        this.searchActioner.unsubscribe();
+        this.logger.notify("Kill Competition List Page");
+        //this.searchActioner.unsubscribe();
     };
-    RegionsPage = __decorate([
+    RegionCompetionsPage = __decorate([
         ionic_1.Page({
-            templateUrl: 'build/pages/regionsPage/regionsPage.html',
-            directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [leagues_1.ProviderService]
+            templateUrl: 'build/pages/regionCompetionsPage/regionCompetionsPage.html',
+            providers: [leagues_1.ProviderService, competitions_1.CompetitionService, router_1.ROUTER_PROVIDERS],
         }), 
-        __metadata('design:paramtypes', [logger_1.Logger, leagues_1.ProviderService])
-    ], RegionsPage);
-    return RegionsPage;
+        __metadata('design:paramtypes', [logger_1.Logger, ionic_1.NavController, ionic_1.NavParams, leagues_1.ProviderService, competitions_1.CompetitionService])
+    ], RegionCompetionsPage);
+    return RegionCompetionsPage;
 })();
-exports.RegionsPage = RegionsPage;
-//# sourceMappingURL=regionsPage.js.map
+exports.RegionCompetionsPage = RegionCompetionsPage;
+//# sourceMappingURL=RegionCompetionsPage.js.map

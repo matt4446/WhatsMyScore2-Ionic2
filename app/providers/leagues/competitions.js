@@ -11,63 +11,40 @@ var core_1 = require('angular2/core');
 var http_1 = require("angular2/http");
 var logger_1 = require("../../providers/logger/logger");
 var routes_1 = require("../routes/routes");
-var ProviderService = (function () {
-    function ProviderService($http, logger) {
+var CompetitionService = (function () {
+    function CompetitionService($http, logger) {
         this.$http = $http;
         this.logger = logger;
         logger.notify("ProviderService created");
     }
-    ProviderService.prototype.Get = function (regionId) {
+    CompetitionService.prototype.List = function (providerId) {
         var base = routes_1.Settings.WebApiBaseUrl;
-        var endpoint = "/api/Providers/Get/";
-        var route = base + endpoint + regionId;
-        this.logger.notify("Load :" + route);
-        var promise = this.$http.get(route);
-        this.logger.notifyResponse(promise);
-        return promise;
-    };
-    ProviderService.prototype.List = function () {
-        var base = routes_1.Settings.WebApiBaseUrl;
-        var endpoint = "/Api/Providers/List/Enabled";
+        var endpoint = "/Api/Providers/{0}/Competitions/Enabled".replace("{0}", providerId);
         var route = base + endpoint;
         this.logger.notify("Load :" + route);
         var promise = this.$http.get(route);
         this.logger.notifyResponse(promise);
         return promise;
     };
-    ProviderService = __decorate([
+    CompetitionService.prototype.Get = function (competitionId) {
+        var base = routes_1.Settings.WebApiBaseUrl;
+        var endpoint = "/Api/Competition/{0}".replace("{0}", competitionId);
+        var route = base + endpoint;
+        this.logger.notify("Load :" + route);
+        var promise = this.$http.get(route);
+        return promise;
+        //         var route = kendo.format("Api/Competition/{0}", competitionId);
+        //             route = kendo.format("{0}/{1}", Settings.WebApiBaseUrl, route);
+        // 
+        //             var promise = this.$http.get(route);
+        // 
+        //             return promise;
+    };
+    CompetitionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, logger_1.Logger])
-    ], ProviderService);
-    return ProviderService;
+    ], CompetitionService);
+    return CompetitionService;
 })();
-exports.ProviderService = ProviderService;
-// export class ProviderService {
-//     private $http: ng.IHttpService;
-// 
-//     constructor($http) {
-//         this.$http = $http;
-//     }
-// 
-//     public Get(providerId: number): angular.IHttpPromise<Models.IProvider> {
-//         var route = "api/Providers/Get/{0}";
-//         route = kendo.format(route, providerId);
-//         route = kendo.format("{0}/{1}", Settings.WebApiBaseUrl, route);
-// 
-//         Logger.Notify("route: " + route);
-// 
-//         var promise = this.$http.get(route);
-// 
-//         return promise;
-//     }
-// 
-//     public List(): angular.IHttpPromise<Models.IProvider[]> {
-//         var route = "Api/Providers/List/Enabled";
-//         route = kendo.format("{0}/{1}", Settings.WebApiBaseUrl, route);
-// 
-//         var promise = this.$http.get(route);
-// 
-//         return promise;
-//     }
-// } 
-//# sourceMappingURL=leagues.js.map
+exports.CompetitionService = CompetitionService;
+//# sourceMappingURL=competitions.js.map

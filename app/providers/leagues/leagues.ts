@@ -1,9 +1,10 @@
 import {Injectable} from 'angular2/core';
-import {Http} from "angular2/http";
+import {Http, Response} from "angular2/http";
 
 import {Logger} from "../../providers/logger/logger";
 import {IProvider} from "../../models/models";
 import {Settings} from "../routes/routes";
+import {Observable, Subscription, BehaviorSubject} from 'rxjs/Rx';
 
 @Injectable()
 export class ProviderService{
@@ -13,31 +14,35 @@ export class ProviderService{
         logger.notify("ProviderService created");
     }
     
-    public Get(providerId: number){
+    public Get(regionId: any){
         
-        var base = Settings.WebApiBaseUrl;
-        var endpoint = "/api/Providers/Get/";
-        var route = base + route + providerId;
+        let base = Settings.WebApiBaseUrl;
+        let endpoint = "/api/Providers/Get/";
+        let route = base + endpoint + regionId;
+        
+        this.logger.notify("Load :" + route);
+        
         var promise = this.$http.get(route);
         
+        this.logger.notifyResponse(promise);
+                
         return promise;
     }
  
     public List() {
-        var base = Settings.WebApiBaseUrl;
-        var endpoint  = "/Api/Providers/List/Enabled";
-        var route = base + endpoint;
+        let base = Settings.WebApiBaseUrl;
+        let endpoint  = "/Api/Providers/List/Enabled";
+        let route = base + endpoint;
         
         this.logger.notify("Load :" + route);
+        
         var promise = this.$http.get(route);
         
-        promise.subscribe(response => {
-            this.logger.notify("response:");
-            this.logger.notify(response);
-        });
+        this.logger.notifyResponse(promise);
         
         return promise;
     }
+   
 }
 
 // export class ProviderService {

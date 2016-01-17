@@ -1,22 +1,31 @@
 import {App, IonicApp, Config, Platform, NavController} from 'ionic-framework/ionic';
-import {Inject, Directive} from 'angular2/core';
+import {Inject, Directive, provide} from 'angular2/core';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS, ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
 //router 
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS} from 'angular2/router';
+import {RouteConfig, LocationStrategy,PathLocationStrategy, HashLocationStrategy, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
 
 //pages 
 import {StartPage} from './pages/startPage/startPage';
 import {RegionsPage} from './pages/regionsPage/regionsPage';
+import {RegionCompetionsPage} from './pages/regionCompetionsPage/RegionCompetionsPage';
+
 import {MapPage} from "./pages/upcomingMapPage/upcomingMapPage";
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';
 
 import {IPage} from "./models/models";
 import {Logger} from './providers/logger/logger';
 //import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
+import {} from "kendo"
 
 @App({
   templateUrl: 'build/app.html',
-  providers:[Logger, ANGULAR2_GOOGLE_MAPS_PROVIDERS] ,
+  providers:[
+    Logger, ANGULAR2_GOOGLE_MAPS_PROVIDERS, 
+    ROUTER_PROVIDERS,
+    PathLocationStrategy,
+    //provide(APP_BASE_HREF, {useValue: '#/'})
+    provide(APP_BASE_HREF, {useValue: "#" + location.pathname})
+  ],
   directives: [ROUTER_DIRECTIVES]
 })
 
@@ -24,6 +33,7 @@ import {Logger} from './providers/logger/logger';
 @RouteConfig([
   { path: '/', component: StartPage, name: 'Start' },
   { path: '/Regions', component: RegionsPage, name: 'Regions' },
+  { path: '/Regions/:id', component: RegionCompetionsPage, name: "RegionCompetitions" },
   { path: '/UpcomingCompetitionMap', component: MapPage, name: "UpcomingCompetitionMap" }
 ])
 

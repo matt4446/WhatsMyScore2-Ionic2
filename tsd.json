@@ -13,6 +13,12 @@
     },
     "googlemaps/google.maps.d.ts": {
       "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "70bf7e2bfeb0d5b1b651ef3219bcc65c8eec117e"
+    },
+    "kendo-ui/kendo-ui.d.ts": {
+      "commit": "70bf7e2bfeb0d5b1b651ef3219bcc65c8eec117e"
     }
   }
 }

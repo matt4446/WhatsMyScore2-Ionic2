@@ -19,6 +19,13 @@ var Logger = (function () {
             console.log(message);
         }
     };
+    Logger.prototype.notifyResponse = function (requestObservable) {
+        var _this = this;
+        var subscription = requestObservable.subscribe(function (response) {
+            _this.notify("response:");
+            _this.notify(response);
+        });
+    };
     Logger = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

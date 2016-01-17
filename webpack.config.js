@@ -35,7 +35,11 @@ module.exports = {
         test: /\angular2-google-maps.js$/,
         include: path.resolve('node_modules/angular2-google-maps/bundles'),
         loader: 'strip-sourcemap'
-      }
+      },
+      { 
+          test: /kendo\-ui\-core[\///].*\.js$/, 
+          loader: "imports?jQuery=jquery" 
+      },
     ],
     noParse: [
       /es6-shim/,
@@ -46,7 +50,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'web-animations.min': path.normalize('ionic-framework/js/web-animations.min')
+      'web-animations.min': path.normalize('ionic-framework/js/web-animations.min'),
+      "kendo": "kendo-ui-webpack"
     },
     extensions: ["", ".js", ".ts"]
   }

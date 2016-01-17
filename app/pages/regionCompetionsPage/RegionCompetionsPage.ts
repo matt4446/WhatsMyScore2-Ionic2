@@ -1,19 +1,23 @@
 import {Page, NavController, NavParams, Searchbar} from 'ionic-framework/ionic';
-import {IProvider} from "../../models/models";
+import {IProvider, ICompetition} from "../../models/models";
+
 import {ProviderService} from "../../providers/leagues/leagues";
+import {CompetitionService} from "../../providers/leagues/competitions";
+
 import {Logger} from "../../providers/logger/logger";
 import {Observable, Subscription, BehaviorSubject} from 'rxjs/Rx';
-import {Router, RouteParams, RouterLink, Location, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {Inject} from 'angular2/core';
+import {Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig} from 'angular2/router';
+
 
 @Page({
-  templateUrl: 'build/pages/regionsPage/regionsPage.html',
-  directives: [ROUTER_DIRECTIVES],
-  providers:[ProviderService] 
+  templateUrl: 'build/pages/regionCompetionsPage/regionCompetionsPage.html',
+  providers:[ProviderService, CompetitionService, ROUTER_PROVIDERS],
 })
 
-export class RegionsPage {
-    public allItems : IProvider[];
-    public items : IProvider[];
+export class RegionCompetionsPage {
+    public allItems : ICompetition[];
+    public items : ICompetition[];
     
     private searchTerm: string;
     private searchSubject : BehaviorSubject<string>;
@@ -21,8 +25,14 @@ export class RegionsPage {
     
     constructor(
         private logger : Logger,
-        private providerService : ProviderService) 
+        private navController: NavController,
+        private navParams: NavParams,
+        private providerService: ProviderService,
+        private competitionService: CompetitionService) 
     {
+        this.logger.notify("params:");
+        this.logger.notify(navParams);
+
         this.searchTerm = "";
         this.searchSubject = new BehaviorSubject<string>("");
         //this.searchItems = "";
@@ -31,7 +41,7 @@ export class RegionsPage {
             //.throttleTime(700)
             .filter((x) => {
                 this.logger.notify("all items");
-                var t = typeof(this.allItems);
+                let t = typeof(this.allItems);
                 return t !== "undefined";
             })
             .subscribe((x) => {
@@ -42,13 +52,22 @@ export class RegionsPage {
             });
     }
     
+    public StartDate(item: ICompetition)
+    {
+        var startDate = kendo.parseDate(item.StartDateTimeUtc);
+        kendo.toString(startDate, "G");
+    }
+    
     public onPageWillEnter() {
-        this.providerService.List()
+        let regionId = this.navParams.get("id");
+        let providerPromise = this.providerService.Get(regionId);
+        
+        this.competitionService.List(regionId)
+            //map is not a function apparently ... 
+            //.map(response => response.json())
             .map(response => response.json())
-            .subscribe((items : IProvider[]) => {
-                this.logger.notify("items loaded");
-                this.logger.notify(items);
-                
+            .subscribe((items: ICompetition[]) => {
+                               
                 this.allItems = items;
                 
                 if(this.searchTerm.length > 0)
@@ -71,9 +90,9 @@ export class RegionsPage {
     
     ngOnDestroy() {
         //clear subscribers etc
-        this.logger.notify("Kill ProvidersListPage");
+        this.logger.notify("Kill Competition List Page");
 
-        this.searchActioner.unsubscribe();
+        //this.searchActioner.unsubscribe();
     }
 
 }

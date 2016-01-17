@@ -8,16 +8,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_1 = require('ionic-framework/ionic');
-var core_1 = require('angular2-google-maps/core');
+var core_1 = require('angular2/core');
+var core_2 = require('angular2-google-maps/core');
 //router 
 var router_1 = require('angular2/router');
 //pages 
 var startPage_1 = require('./pages/startPage/startPage');
 var regionsPage_1 = require('./pages/regionsPage/regionsPage');
+var RegionCompetionsPage_1 = require('./pages/regionCompetionsPage/RegionCompetionsPage');
 var upcomingMapPage_1 = require("./pages/upcomingMapPage/upcomingMapPage");
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
 var logger_1 = require('./providers/logger/logger');
-//import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 var MyApp = (function () {
     function MyApp(app, config, platform, logger) {
         this.app = app;
@@ -47,12 +48,19 @@ var MyApp = (function () {
     MyApp = __decorate([
         ionic_1.App({
             templateUrl: 'build/app.html',
-            providers: [logger_1.Logger, core_1.ANGULAR2_GOOGLE_MAPS_PROVIDERS],
+            providers: [
+                logger_1.Logger, core_2.ANGULAR2_GOOGLE_MAPS_PROVIDERS,
+                router_1.ROUTER_PROVIDERS,
+                router_1.PathLocationStrategy,
+                //provide(APP_BASE_HREF, {useValue: '#/'})
+                core_1.provide(router_1.APP_BASE_HREF, { useValue: "#" + location.pathname })
+            ],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.RouteConfig([
             { path: '/', component: startPage_1.StartPage, name: 'Start' },
             { path: '/Regions', component: regionsPage_1.RegionsPage, name: 'Regions' },
+            { path: '/Regions/:id', component: RegionCompetionsPage_1.RegionCompetionsPage, name: "RegionCompetitions" },
             { path: '/UpcomingCompetitionMap', component: upcomingMapPage_1.MapPage, name: "UpcomingCompetitionMap" }
         ]), 
         __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Config, ionic_1.Platform, logger_1.Logger])
