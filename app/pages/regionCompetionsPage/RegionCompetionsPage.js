@@ -42,7 +42,8 @@ var RegionCompetionsPage = (function () {
     }
     RegionCompetionsPage.prototype.StartDate = function (item) {
         var startDate = kendo.parseDate(item.StartDateTimeUtc);
-        kendo.toString(startDate, "G");
+        var display = kendo.toString(startDate, "G");
+        return display;
     };
     RegionCompetionsPage.prototype.onPageWillEnter = function () {
         var _this = this;

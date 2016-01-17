@@ -19,6 +19,13 @@ var RegionCompetionsPage_1 = require('./pages/regionCompetionsPage/RegionCompeti
 var upcomingMapPage_1 = require("./pages/upcomingMapPage/upcomingMapPage");
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
 var logger_1 = require('./providers/logger/logger');
+//import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
+//import {} from "kendo"
+var w = window;
+var $ = require('jquery');
+w.jQuery = $;
+w.$ = $;
+w.kendo = require("../node_modules/kendo-ui-core/dist/js/kendo.custom.js");
 var MyApp = (function () {
     function MyApp(app, config, platform, logger) {
         this.app = app;

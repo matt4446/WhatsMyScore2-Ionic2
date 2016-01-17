@@ -15,7 +15,13 @@ import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompeti
 import {IPage} from "./models/models";
 import {Logger} from './providers/logger/logger';
 //import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
-import {} from "kendo"
+//import {} from "kendo"
+
+var w: any = window;
+var $ = require('jquery');
+w.jQuery = $;
+w.$ = $;
+w.kendo = require("../node_modules/kendo-ui-core/dist/js/kendo.custom.js")
 
 @App({
   templateUrl: 'build/app.html',
@@ -51,7 +57,7 @@ export class MyApp  {
         private logger: Logger) {
         //var logger = new Logger();
         this.logger.notify("starting");
-        
+
         this.pages = [
             {
                 title : "Providers",

@@ -55,7 +55,8 @@ export class RegionCompetionsPage {
     public StartDate(item: ICompetition)
     {
         var startDate = kendo.parseDate(item.StartDateTimeUtc);
-        kendo.toString(startDate, "G");
+        var display = kendo.toString(startDate, "G");
+        return display;
     }
     
     public onPageWillEnter() {
