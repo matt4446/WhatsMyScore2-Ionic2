@@ -84,4 +84,4 @@ var RegionCompetionsPage = (function () {
     return RegionCompetionsPage;
 })();
 exports.RegionCompetionsPage = RegionCompetionsPage;
-//# sourceMappingURL=RegionCompetionsPage.js.map
+//# sourceMappingURL=regionCompetionsPage.js.map

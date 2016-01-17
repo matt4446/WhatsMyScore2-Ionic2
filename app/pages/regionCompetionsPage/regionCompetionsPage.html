@@ -5,19 +5,23 @@
 </ion-navbar>
 
 <ion-content has-bouncing="true">
-    <ion-searchbar 
-        (input)="update($event)"
-        placeholder="Search">
+    <ion-searchbar (input)="update($event)" placeholder="Search">
     </ion-searchbar>
+
     <ion-list>
-        <ion-item *ngFor="#item of items">
+        <ion-list-header>
+            Competitions
+        </ion-list-header>
+        <button ion-item *ngFor="#item of items">
             <h2>{{item.Name}}</h2>
-                <p>
-                    {{item.LocationName}}
-                </p>
+            <p>
+                {{item.LocationName}}
+            </p>
             <ion-note item-right>
                 {{StartDate(item)}}
             </ion-note>
-        </ion-item>
+        </button>
     </ion-list>
+
+
 </ion-content>

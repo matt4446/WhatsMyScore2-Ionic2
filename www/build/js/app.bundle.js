@@ -3221,7 +3221,7 @@
 	//pages 
 	var startPage_1 = __webpack_require__(364);
 	var regionsPage_1 = __webpack_require__(365);
-	var RegionCompetionsPage_1 = __webpack_require__(598);
+	var regionCompetionsPage_1 = __webpack_require__(598);
 	var upcomingMapPage_1 = __webpack_require__(597);
 	var searchCompetitorsPage_1 = __webpack_require__(596);
 	var logger_1 = __webpack_require__(367);
@@ -3242,6 +3242,7 @@
 	        this.providersPage = regionsPage_1.RegionsPage;
 	        //var logger = new Logger();
 	        this.logger.notify("starting");
+	        core_1.enableProdMode();
 	        this.pages = [
 	            {
 	                title: "Providers",
@@ -3273,7 +3274,7 @@
 	        router_1.RouteConfig([
 	            { path: '/', component: startPage_1.StartPage, name: 'Start' },
 	            { path: '/Regions', component: regionsPage_1.RegionsPage, name: 'Regions' },
-	            { path: '/Regions/:id', component: RegionCompetionsPage_1.RegionCompetionsPage, name: "RegionCompetitions" },
+	            { path: '/Regions/:id', component: regionCompetionsPage_1.RegionCompetionsPage, name: "RegionCompetitions" },
 	            { path: '/UpcomingCompetitionMap', component: upcomingMapPage_1.MapPage, name: "UpcomingCompetitionMap" }
 	        ]), 
 	        __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Config, ionic_1.Platform, logger_1.Logger])
@@ -71218,7 +71219,7 @@
 	    return RegionCompetionsPage;
 	})();
 	exports.RegionCompetionsPage = RegionCompetionsPage;
-	//# sourceMappingURL=RegionCompetionsPage.js.map
+	//# sourceMappingURL=regionCompetionsPage.js.map
 
 /***/ },
 /* 599 */

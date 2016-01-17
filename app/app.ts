@@ -1,13 +1,14 @@
 import {App, IonicApp, Config, Platform, NavController} from 'ionic-framework/ionic';
 import {Inject, Directive, provide} from 'angular2/core';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS, ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
+
 //router 
 import {RouteConfig, LocationStrategy,PathLocationStrategy, HashLocationStrategy, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
 
 //pages 
 import {StartPage} from './pages/startPage/startPage';
 import {RegionsPage} from './pages/regionsPage/regionsPage';
-import {RegionCompetionsPage} from './pages/regionCompetionsPage/RegionCompetionsPage';
+import {RegionCompetionsPage} from './pages/regionCompetionsPage/regionCompetionsPage';
 
 import {MapPage} from "./pages/upcomingMapPage/upcomingMapPage";
 import {SearchCompetitorsPage} from './pages/searchCompetitorsPage/searchCompetitorsPage';

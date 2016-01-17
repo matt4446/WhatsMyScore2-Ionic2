@@ -15,7 +15,7 @@ var router_1 = require('angular2/router');
 //pages 
 var startPage_1 = require('./pages/startPage/startPage');
 var regionsPage_1 = require('./pages/regionsPage/regionsPage');
-var RegionCompetionsPage_1 = require('./pages/regionCompetionsPage/RegionCompetionsPage');
+var regionCompetionsPage_1 = require('./pages/regionCompetionsPage/regionCompetionsPage');
 var upcomingMapPage_1 = require("./pages/upcomingMapPage/upcomingMapPage");
 var searchCompetitorsPage_1 = require('./pages/searchCompetitorsPage/searchCompetitorsPage');
 var logger_1 = require('./providers/logger/logger');
@@ -36,6 +36,7 @@ var MyApp = (function () {
         this.providersPage = regionsPage_1.RegionsPage;
         //var logger = new Logger();
         this.logger.notify("starting");
+        core_1.enableProdMode();
         this.pages = [
             {
                 title: "Providers",
@@ -67,7 +68,7 @@ var MyApp = (function () {
         router_1.RouteConfig([
             { path: '/', component: startPage_1.StartPage, name: 'Start' },
             { path: '/Regions', component: regionsPage_1.RegionsPage, name: 'Regions' },
-            { path: '/Regions/:id', component: RegionCompetionsPage_1.RegionCompetionsPage, name: "RegionCompetitions" },
+            { path: '/Regions/:id', component: regionCompetionsPage_1.RegionCompetionsPage, name: "RegionCompetitions" },
             { path: '/UpcomingCompetitionMap', component: upcomingMapPage_1.MapPage, name: "UpcomingCompetitionMap" }
         ]), 
         __metadata('design:paramtypes', [ionic_1.IonicApp, ionic_1.Config, ionic_1.Platform, logger_1.Logger])
